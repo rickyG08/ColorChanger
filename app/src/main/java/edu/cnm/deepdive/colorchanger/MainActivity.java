@@ -1,6 +1,7 @@
 package edu.cnm.deepdive.colorchanger;
 
 import android.graphics.Color;
+import android.view.View.OnClickListener;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,8 +10,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class MainActivity extends AppCompatActivity implements OnSeekBarChangeListener {
 
-  SeekBar red, green, blue;
-  ConstraintLayout layout;
+  private SeekBar red, green, blue;
+  private ConstraintLayout layout;
+  private OnClickListener reset; // reset button not implemented.
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -19,14 +22,15 @@ public class MainActivity extends AppCompatActivity implements OnSeekBarChangeLi
 
     layout = findViewById(R.id.screen);
 
-    red = findViewById(R.id.red);
-    green = findViewById(R.id.green);
-    blue = findViewById(R.id.blue);
+    red = (SeekBar) findViewById(R.id.red_bar);
+    green = (SeekBar) findViewById(R.id.green_bar);
+    blue = (SeekBar) findViewById(R.id.blue_bar);
 
     red.setOnSeekBarChangeListener(this);
     green.setOnSeekBarChangeListener(this);
     blue.setOnSeekBarChangeListener(this);
   }
+
 
   @Override
   public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
